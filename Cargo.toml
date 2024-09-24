@@ -1,0 +1,17 @@
+[package]
+name = "loadbalancer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = {version = "1.40.0", features = ["rt-multi-thread"]}
+tonic = "0.12.2"
+prost = "0.13.3"
+
+[[bin]] # Bin to run the HelloWorld gRPC server
+name = "helloworld-server"
+path = "src/server.rs"
+
+
+[build-dependencies]
+tonic-build = "0.12"
