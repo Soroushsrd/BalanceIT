@@ -1,8 +1,19 @@
-# TODO 
-1. a load balancer in L3/L4 which forwards the requests to the backend servers. this should use tcp/udp ports. this should handle http2 connections
-2. a TLS on load balancer that encrypts the traffic between client and load balancer
-3. set up or configure multiple instances of gprc
-4. an algorithm for the load balancer to choose or balance the load between these instances
-5. an algorithm to check the health of gprc health
-
-6. a process to keep the connection alive
+1. CLI Structure: We'll use a CLI tool that accepts:
+    * A configuration file (e.g., YAML or JSON) for server settings
+    * Path to the .proto file
+    * Command-line options for overriding config settings
+2. Components: a. CLI Parser:
+    * Parse command-line arguments
+    * Read and parse the configuration file
+    * Validate inputs
+      b. Proto Compiler:
+    * Dynamically compile the .proto file
+    * Generate Rust code for the gRPC service
+      c. Dynamic Service Builder:
+    * Use the compiled proto to create a dynamic gRPC service
+      d. Load Balancer Core:
+    * Implement the load balancing logic
+    * Manage backend connections
+    * Handle health checks
+      e. Server:
+    * Set up and run the gRPC server with the dynamic service
